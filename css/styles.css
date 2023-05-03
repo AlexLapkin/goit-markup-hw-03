@@ -5,12 +5,29 @@ body {
     }
 
 /*--Сброс дефолтных настроек--*/
+
+/*--Сброс настроек списков списков ul, ol--*/
 .list
 {list-style: none;}
 
+ul, ol
+{margin-top: 0;
+ margin-bottom: 0;
+ padding-left: 0;   
+}    
+
+/*--Сброс настроек ссылок a--*/
 .link
 {text-decoration: none;}
 
+/*--Сброс настроек заголовков h и текста p--*/
+h1, h2, h3, p
+{margin-top: 0;
+ margin-bottom: 0;
+}
+
+/*--Сбрасываем нижний отступ в изображениях, делая их блоковыми--*/
+img {display: block;}
 
 /*--Задание палитры цветов через переменные--*/
 :root
@@ -31,6 +48,15 @@ body {
 --footer-main-text-color:#F4F4FD;
 }
 
+/*--Задаем контейнер для центровки и ограничения ширины контента--*/
+.container
+{
+width: 1158px;
+margin-left: auto;
+margin-right: auto;
+}
+
+
 /*--Данные логотипа--*/
 .logo
 {
@@ -43,6 +69,10 @@ letter-spacing: 0.03em;
 text-transform: uppercase;
 }
 
+/*--.header
+{border-bottom: 1px solid #E7E9FC;    
+}--*/
+
 .header-word {
 color: var(--header-word-color);
 font-family: 'Raleway' sans-serif;;
@@ -53,24 +83,62 @@ letter-spacing: 0.03em;
 text-transform: uppercase;
 }
 
+/*--Описываем контейнер главной навигации--*/
+.main-nav
+{
+display: flex; /*--Выстраиваем элементы по горизонтали--*/
+align-items: center; /*--Центруем элементы вдоль горизонтальной оси--*/
+padding-top: 24px;    /*--Задаем верхний внутренний отступ--*/
+padding-bottom: 24px; /*--Задаем нижний внутренний отступ--*/
+        }
+
+/*--Делаем логотип и список навигации flex-контейнером--*/
+.nav
+{display: flex;
+}
+
+/*--Делаем список навигации flex-контейнером--*/
+.nav-ul {
+display: flex;
+margin-left: 76px; /*--Задаем отступ между логотипом и nav-ul--*/
+}
+
+/*--Задаем правый отступ всем item nav, кроме крайних--*/
+.nav-ul .item:not(:last-child)
+{
+margin-right: 40px;    
+}
+
 /*--Данные навигационных ссылок--*/
 .nav-link {
-color: var(--nav-link-color);
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.02em;
+    color: var(--nav-link-color);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
 }
 
+/*--Меняем цвет ссылок при наведении--*/
 .nav-link:hover,
 .nav-link:focus {
-color: var(--link-active-color);
+    color: var(--link-active-color);
 }
 
-/*--Данные контактов--*/
 
+/*--Прижимаем секцию почты и телефона к правому краю--*/
 .cont
-{font-style: normal;}
+{font-style: normal; /*--сбрасываем стиль italic--*/
+margin-left: auto;}
+
+/*--Делаем список контактов flex-контейнером--*/
+.cont-ul {
+display: flex;
+}
+
+/*--Задаем правый отступ всем item cont, кроме крайних--*/
+.cont-ul .item:not(:last-child) 
+{margin-right: 40px;}
+
 
 .cont-link {
 color: var(--main-text-color);
@@ -81,6 +149,7 @@ letter-spacing: 0.02em;
 text-decoration: none;
 }
 
+/*--Меняем цвет ссылок при наведении--*/
 .cont-link:hover,
 .cont-link:focus {
 color: var(--link-active-color);
@@ -89,10 +158,17 @@ color: var(--link-active-color);
 
 /*--Данные секции HERO--*/
 
+/*--Задаем параметры секции hero--*/
 .hero {
 background-color: var(--hero-background-color);
+margin-top: 0;
+/*--margin-bottom: 120px;--*/
+width: 1440px;
+margin-left: auto;
+margin-right: auto;
 }
 
+/*--Задаем параметры заголовка секции hero--*/
 .hero-title {
 color: var(--hero-title-color);
 font-weight: 700;
@@ -100,8 +176,11 @@ font-size: 56px;
 line-height: 1.07;
 text-align: center;
 letter-spacing: 0.02em;
+width: 500px;
+padding-top: 188px;
+margin-left: auto;
+margin-right: auto;
 }
-
 
 /*---Кнопка Order Service---*/
 .main-btn {
@@ -113,13 +192,20 @@ font-size: 16px;
 line-height: 1.5;
 letter-spacing: 0.04em;
 border: none;
-cursor: pointer;
+min-width: 169px;
+/*--height: 56px;--*/
+margin-left: 495px;
+margin-top: 48px;
+margin-bottom: 188px;
+padding: 16px 32px 16px 32px;
 }
 
+/*--Меняем цвет кнопок при навдении--*/
 .main-btn:hover,
 .main-btn:focus {
 color: var(--main-btn-color);
 background-color: #404BBF;
+cursor: pointer;
 }
 
 /*---Кнопки Портфолио---*/
@@ -133,8 +219,11 @@ background-color: #404BBF;
     letter-spacing: 0.04em;
     border: none;
     cursor: pointer;
+    margin-left: 24px;
+    padding: 12px 24px 12px 24px;
 }
 
+/*--Меняем цвет кнопок при наведении--*/
 .btn:hover,
 .btn:focus {
     color: var(--main-btn-color);
@@ -150,41 +239,122 @@ line-height: 1.11;
 text-align: center;
 letter-spacing: 0.02em;
 text-transform: capitalize;
+margin-bottom: 72px;
+}
+
+/*--Делаем список flex-элементом, чтобы список расположить горизонтально--*/
+.section-ul
+{
+display: flex;
+margin-left: -24px;
+margin-top: 120px;
+margin-bottom: 120px;
+}
+
+/*--Описываем каждый элемент списка--*/
+.section-item {
+/*--flex-basis: calc(100% / 3);--*/
+margin-left: 24px;
 }
 
 /*--Данные подзаголовков--*/
 .section-subtitle {
-color: var(--section-main-text-color);
-font-weight: 500;
-font-size: 20px;
-line-height: 1.2;
-letter-spacing: 0.02em;
+    color: var(--section-main-text-color);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
 }
-
-/*--.section {background: #E5E5E5;}--*/
 
 /*--Данные текста секции--*/
 .section-text {
-color: var(--main-text-color);
-font-weight: 400;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.02em;
+    color: var(--main-text-color);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
 }
 
 /*--Данные секции Our Team, у которой отличается фон--*/
 .section-team
 {
-background: var(--section-team-background-color);
+    background: var(--section-team-background-color);
 }
 
-.section-team-card
-{background-color: var(--main-background-color);}
+.section-team-card {
+    background-color: var(--main-background-color);
+    /*--height: 380px;--*/
+    margin-left: 24px;
+    text-align: center;
+}
+
+/*--Задание отступов для ФИ членов команды--*/
+.section-team-card .section-subtitle {
+    margin-top: 32px;
+    margin-bottom: 8px;
+}
+
+/*--Задание отступов для текста секции Our Team--*/
+.section-team-card .section-text {
+    padding-bottom: 32px;
+}
+
+
+/*--Делаем список кнопок flex-элементом, чтобы кнопки расположить горизонтально--*/
+.section-ul-button {
+    display: flex;
+    margin-top: 96px;
+    justify-content: center;
+    margin-bottom: 72px;
+    /*-- flex-basis: calc(100%/2);--*/
+}
+
+/*--Задаем зазоры между кнопками Портфолио--*/
+.section-ul-button .item-btn:not(:last-child) {
+    margin-right: 24px;
+}
+
+/*--Делаем список flex-элементом, чтобы список расположить горизонтально
+    в несколько рядов--*/
+.section-ul-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -24px;
+    margin-bottom: 120px;
+    flex-basis: calc(100% / 3 - 24px);
+}
+
+/*--Описываем каждый элемент списка--*/
+.section-item-card {
+    /*--flex-basis: calc(100% / 3);--*/
+    margin-left: 24px;
+    margin-bottom: 48px;
+    border: 1px solid #E7E9FC;
+}
+
+/*--Задание отступов названиям img портфолио--*/
+.section-item-card .section-subtitle {
+    margin-top: 32px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+}
+
+/*--Задание отступов текста img Portfolio--*/
+.section-item-card .section-text {
+    padding-bottom: 32px;
+    margin-left: 16px;
+}
 
 
 /*--Данные Футера--*/
 .footer {
 background-color: var(--footer-background-color);
+width: 1440px;
+/*--height: 312px;--*/
+padding-top: 120px;
+margin-left: auto;
+margin-right: auto;
 }
 
 .footer-word
@@ -204,4 +374,8 @@ font-weight: 400;
 font-size: 16px;
 line-height: 1.5;
 letter-spacing: 0.02em;
+width: 264px;
+padding-bottom: 100px;
+margin-top:16px; 
 }
+
