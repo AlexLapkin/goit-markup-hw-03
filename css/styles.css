@@ -52,10 +52,9 @@ img {display: block;}
 .container
 {
 width: 1158px;
-margin-left: auto;
-margin-right: auto;
+margin: 0 auto;
+padding: 0 15px; 
 }
-
 
 /*--Данные логотипа--*/
 .logo
@@ -67,11 +66,11 @@ font-size: 18px;
 line-height: 1.17;
 letter-spacing: 0.03em;
 text-transform: uppercase;
+margin-right: 76px;/*--Задаем отступ между логотипом и nav-ul--*/
 }
 
-/*--.header
-{border-bottom: 1px solid #E7E9FC;    
-}--*/
+.header
+{border-bottom: 1px solid #E7E9FC;}
 
 .header-word {
 color: var(--header-word-color);
@@ -87,27 +86,26 @@ text-transform: uppercase;
 .main-nav
 {
 display: flex; /*--Выстраиваем элементы по горизонтали--*/
-align-items: center; /*--Центруем элементы вдоль горизонтальной оси--*/
-padding-top: 24px;    /*--Задаем верхний внутренний отступ--*/
-padding-bottom: 24px; /*--Задаем нижний внутренний отступ--*/
-        }
+}
 
 /*--Делаем логотип и список навигации flex-контейнером--*/
 .nav
 {display: flex;
+ align-items: center; /*--Центруем элементы вдоль горизонтальной оси--*/
 }
 
 /*--Делаем список навигации flex-контейнером--*/
 .nav-ul {
 display: flex;
-margin-left: 76px; /*--Задаем отступ между логотипом и nav-ul--*/
 }
 
 /*--Задаем правый отступ всем item nav, кроме крайних--*/
 .nav-ul .item:not(:last-child)
-{
-margin-right: 40px;    
-}
+{margin-right: 40px;}
+
+/*--Задаем внутренние отступы всем элементам навигации--*/
+.item
+{padding: 24px; 0; }
 
 /*--Данные навигационных ссылок--*/
 .nav-link {
@@ -162,8 +160,8 @@ color: var(--link-active-color);
 .hero {
 background-color: var(--hero-background-color);
 margin-top: 0;
-/*--margin-bottom: 120px;--*/
 width: 1440px;
+padding: 188px 0;
 margin-left: auto;
 margin-right: auto;
 }
@@ -176,8 +174,7 @@ font-size: 56px;
 line-height: 1.07;
 text-align: center;
 letter-spacing: 0.02em;
-width: 500px;
-padding-top: 188px;
+max-width: 496px;
 margin-left: auto;
 margin-right: auto;
 }
@@ -192,12 +189,15 @@ font-size: 16px;
 line-height: 1.5;
 letter-spacing: 0.04em;
 border: none;
+display: block;
+cursor: pointer;
 min-width: 169px;
-/*--height: 56px;--*/
-margin-left: 495px;
+height: 56px;
+margin-left: auto;
+margin-right: auto;
 margin-top: 48px;
-margin-bottom: 188px;
 padding: 16px 32px 16px 32px;
+border-radius: 4px;
 }
 
 /*--Меняем цвет кнопок при навдении--*/
@@ -219,8 +219,8 @@ cursor: pointer;
     letter-spacing: 0.04em;
     border: none;
     cursor: pointer;
-    margin-left: 24px;
     padding: 12px 24px 12px 24px;
+    display: block;
 }
 
 /*--Меняем цвет кнопок при наведении--*/
@@ -229,6 +229,9 @@ cursor: pointer;
     color: var(--main-btn-color);
     background-color: #404BBF;
 }
+
+/*--Задаем внутренние отступы секции Adv и Our_Team--*/
+.section-adv {padding: 120px 0;}
 
 /*--Данные заголовка секции--*/
 .section-title {
@@ -246,15 +249,24 @@ margin-bottom: 72px;
 .section-ul
 {
 display: flex;
-margin-left: -24px;
-margin-top: 120px;
-margin-bottom: 120px;
+gap: 24px;
 }
 
-/*--Описываем каждый элемент списка--*/
+/*--Определяем ширину пункта списка--*/
 .section-item {
-/*--flex-basis: calc(100% / 3);--*/
-margin-left: 24px;
+flex-basis: calc((100% - 3*24px)/4);
+/*--width: calc((100% - 3*24px)/4)--*/
+}
+
+/*--Задаем внутренний отступ секции Work Exmpl--*/
+.section-exmp {
+padding-bottom: 120px;
+}
+
+/*--Определяем ширину списка img--*/
+.section-item-img {
+flex-basis: calc((100% - 3*16px)/3);
+/*--width: calc((100% - 3*16px)/3)--*/
 }
 
 /*--Данные подзаголовков--*/
@@ -278,84 +290,89 @@ margin-left: 24px;
 
 /*--Данные секции Our Team, у которой отличается фон--*/
 .section-team
-{
-    background: var(--section-team-background-color);
-}
+{background: var(--section-team-background-color);
+padding: 120px 0;} /*--Задаем внутренние паддинги--*/
 
 .section-team-card {
     background-color: var(--main-background-color);
-    /*--height: 380px;--*/
-    margin-left: 24px;
     text-align: center;
+    flex-basis: calc((100% - 3*24px)/4);
+    /*--width: calc((100% - 3*24px)/4)--*/
+    border-radius: 0px 0px 4px 4px;
 }
 
-/*--Задание отступов для ФИ членов команды--*/
-.section-team-card .section-subtitle {
-    margin-top: 32px;
-    margin-bottom: 8px;
+/*--Создание контейнера - имя, должность членов команды--*/
+.name-job
+{padding: 32px 16px; } /*--внутренние отступы контейнера--*/
+
+/*--Задание параметров ФИ сотрудника--*/
+.name-job .section-subtitle
+{text-align: center;
+ margin-bottom: 8px;
 }
 
-/*--Задание отступов для текста секции Our Team--*/
-.section-team-card .section-text {
-    padding-bottom: 32px;
-}
-
+/*--Задание параметров должности сотрудника--*/
+.name-job .section-text 
+{text-align: center;}
 
 /*--Делаем список кнопок flex-элементом, чтобы кнопки расположить горизонтально--*/
 .section-ul-button {
     display: flex;
-    margin-top: 96px;
-    justify-content: center;
+    gap: 24px;
     margin-bottom: 72px;
-    /*-- flex-basis: calc(100%/2);--*/
-}
-
-/*--Задаем зазоры между кнопками Портфолио--*/
-.section-ul-button .item-btn:not(:last-child) {
-    margin-right: 24px;
-}
+    justify-content: center;
+    }
 
 /*--Делаем список flex-элементом, чтобы список расположить горизонтально
     в несколько рядов--*/
 .section-ul-card {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -24px;
-    margin-bottom: 120px;
-    flex-basis: calc(100% / 3 - 24px);
+    gap: 24px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /*--Описываем каждый элемент списка--*/
 .section-item-card {
-    /*--flex-basis: calc(100% / 3);--*/
-    margin-left: 24px;
-    margin-bottom: 48px;
-    border: 1px solid #E7E9FC;
+flex-basis: calc((100% - 2*24px)/3);
 }
 
-/*--Задание отступов названиям img портфолио--*/
-.section-item-card .section-subtitle {
-    margin-top: 32px;
-    margin-bottom: 8px;
-    margin-left: 16px;
+
+/*--Задание паддингов для секции Портфолио--*/
+.section-port
+{
+padding-top: 96px;
+padding-bottom: 120px;
 }
 
-/*--Задание отступов текста img Portfolio--*/
-.section-item-card .section-text {
-    padding-bottom: 32px;
-    margin-left: 16px;
+/*--Создание контейнера - имя, должность членов команды--*/
+.img-title {
+padding: 32px 0px; /*--внутренние отступы контейнера--*/
 }
+
+/*--Задание отступа подзаголовку img Portfolio--*/
+.img-title .section-subtitle
+{padding-left: 16px;
+ margin-bottom: 8px;}
+
+/*--Задание отступа подтексту img Portfolio--*/
+.img-title .section-text 
+{padding-left: 16px;}
 
 
 /*--Данные Футера--*/
 .footer {
 background-color: var(--footer-background-color);
 width: 1440px;
-/*--height: 312px;--*/
-padding-top: 120px;
+padding: 100px 0;
 margin-left: auto;
 margin-right: auto;
 }
+
+.ft
+{display: inline-block;
+margin-bottom: 16px;}
 
 .footer-word
 {color: var(--footer-main-text-color);
@@ -375,7 +392,5 @@ font-size: 16px;
 line-height: 1.5;
 letter-spacing: 0.02em;
 width: 264px;
-padding-bottom: 100px;
-margin-top:16px; 
 }
 
