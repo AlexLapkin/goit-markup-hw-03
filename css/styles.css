@@ -52,6 +52,7 @@ img {display: block;}
 /*--Задаем контейнер для центровки и ограничения ширины контента--*/
 
 .header {
+padding: 24px 0;    
 border-bottom: 1px solid #E7E9FC;
 }
 
@@ -102,11 +103,7 @@ display: flex;
 /*--gap: 40px;--*/
 }
 
-/*--Задаем внутренние отступы всем элементам навигации--*/
-.header
-{padding: 24px 0;}
-
- /*--Задаем правый отступ всем item nav, кроме крайних--*/
+/*--Задаем правый отступ всем item nav, кроме крайних--*/
  .nav-ul .item:not(:last-child) {
  margin-right: 40px;
  }
@@ -118,6 +115,7 @@ display: flex;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    padding: 24px 0;
 }
 
 /*--Меняем цвет ссылок при наведении--*/
