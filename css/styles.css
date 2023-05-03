@@ -354,6 +354,7 @@ flex-basis: calc((100% - 2*24px)/3);
 .img-title {
 padding: 32px 16px; /*--внутренние отступы контейнера--*/
 border: 1px solid #e7e9fc;
+border-top: none;
 }
 
 /*--Задание отступа подзаголовку img Portfolio--*/
