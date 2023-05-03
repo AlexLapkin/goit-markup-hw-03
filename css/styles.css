@@ -42,18 +42,35 @@ img {display: block;}
 --hero-title-color:#FFFFFF;
 --main-btn-color:#FFFFFF;
 --btn-color: #4D5AE5;
---section-main-text-color:#2E2F42;
+--border-btn-color: #e7e9fc;
+--section-main-text-color: #2E2F42;
 --section-team-background-color:#F4F4FD;
 --footer-background-color:#2E2F42;
 --footer-main-text-color:#F4F4FD;
 }
 
 /*--Задаем контейнер для центровки и ограничения ширины контента--*/
+
+.header {
+border-bottom: 1px solid #E7E9FC;
+}
+
 .container
 {
 width: 1158px;
 margin: 0 auto;
 padding: 0 15px; 
+}
+
+/*--Описываем контейнер главной навигации--*/
+.main-nav {
+display: flex; /*--Выстраиваем элементы по горизонтали--*/
+}
+
+/*--Делаем логотип и список навигации flex-контейнером--*/
+.nav {
+display: flex;
+align-items: center;/*--Центруем элементы вдоль горизонтальной оси--*/
 }
 
 /*--Данные логотипа--*/
@@ -69,9 +86,6 @@ text-transform: uppercase;
 margin-right: 76px;/*--Задаем отступ между логотипом и nav-ul--*/
 }
 
-.header
-{border-bottom: 1px solid #E7E9FC;}
-
 .header-word {
 color: var(--header-word-color);
 font-family: 'Raleway' sans-serif;;
@@ -82,21 +96,10 @@ letter-spacing: 0.03em;
 text-transform: uppercase;
 }
 
-/*--Описываем контейнер главной навигации--*/
-.main-nav
-{
-display: flex; /*--Выстраиваем элементы по горизонтали--*/
-}
-
-/*--Делаем логотип и список навигации flex-контейнером--*/
-.nav
-{display: flex;
- align-items: center; /*--Центруем элементы вдоль горизонтальной оси--*/
-}
-
 /*--Делаем список навигации flex-контейнером--*/
 .nav-ul {
 display: flex;
+/*--gap: 40px;--*/
 }
 
 /*--Задаем правый отступ всем item nav, кроме крайних--*/
@@ -105,7 +108,7 @@ display: flex;
 
 /*--Задаем внутренние отступы всем элементам навигации--*/
 .item
-{padding: 24px; 0; }
+{padding: 24px 0; }
 
 /*--Данные навигационных ссылок--*/
 .nav-link {
@@ -122,7 +125,6 @@ display: flex;
     color: var(--link-active-color);
 }
 
-
 /*--Прижимаем секцию почты и телефона к правому краю--*/
 .cont
 {font-style: normal; /*--сбрасываем стиль italic--*/
@@ -136,7 +138,6 @@ display: flex;
 /*--Задаем правый отступ всем item cont, кроме крайних--*/
 .cont-ul .item:not(:last-child) 
 {margin-right: 40px;}
-
 
 .cont-link {
 color: var(--main-text-color);
@@ -208,29 +209,7 @@ background-color: #404BBF;
 cursor: pointer;
 }
 
-/*---Кнопки Портфолио---*/
-.btn {
-    color: var(--btn-color);
-    background-color: #F4F4FD;;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    border: none;
-    cursor: pointer;
-    padding: 12px 24px 12px 24px;
-    display: block;
-}
-
-/*--Меняем цвет кнопок при наведении--*/
-.btn:hover,
-.btn:focus {
-    color: var(--main-btn-color);
-    background-color: #404BBF;
-}
-
-/*--Задаем внутренние отступы секции Adv и Our_Team--*/
+/*--Задаем внутренние отступы секции Adv--*/
 .section-adv {padding: 120px 0;}
 
 /*--Данные заголовка секции--*/
@@ -258,15 +237,10 @@ flex-basis: calc((100% - 3*24px)/4);
 /*--width: calc((100% - 3*24px)/4)--*/
 }
 
-/*--Задаем внутренний отступ секции Work Exmpl--*/
-.section-exmp {
-padding-bottom: 120px;
-}
-
 /*--Определяем ширину списка img--*/
 .section-item-img {
-flex-basis: calc((100% - 3*16px)/3);
-/*--width: calc((100% - 3*16px)/3)--*/
+    flex-basis: calc((100% - 3*16px)/3);
+    /*--width: calc((100% - 3*16px)/3)--*/
 }
 
 /*--Данные подзаголовков--*/
@@ -286,6 +260,11 @@ flex-basis: calc((100% - 3*16px)/3);
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+}
+
+/*--Задаем внутренний отступ секции Work Exmpl--*/
+.section-exmp {
+padding-bottom: 120px;
 }
 
 /*--Данные секции Our Team, у которой отличается фон--*/
@@ -315,7 +294,14 @@ padding: 120px 0;} /*--Задаем внутренние паддинги--*/
 .name-job .section-text 
 {text-align: center;}
 
-/*--Делаем список кнопок flex-элементом, чтобы кнопки расположить горизонтально--*/
+
+/*--Задание паддингов для секции Портфолио--*/
+.section-port {
+    padding-top: 96px;
+    padding-bottom: 120px;
+}
+
+/*--Делаем список кнопок горизонтальным flex-элементом--*/
 .section-ul-button {
     display: flex;
     gap: 24px;
@@ -323,12 +309,38 @@ padding: 120px 0;} /*--Задаем внутренние паддинги--*/
     justify-content: center;
     }
 
+/*---Кнопки Портфолио---*/
+.btn {
+    color: var(--btn-color);
+    background-color: #F4F4FD;
+    ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--border-btn-color);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 12px 24px 12px 24px;
+    display: block;
+}
+
+/*--Меняем цвет кнопок при наведении--*/
+.btn:hover,
+.btn:focus {
+    color: var(--main-btn-color);
+    background-color: #404BBF;
+    border: 1px solid transparent;
+}
+
 /*--Делаем список flex-элементом, чтобы список расположить горизонтально
     в несколько рядов--*/
 .section-ul-card {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    column-gap: 24px;
+    row-gap: 48px;
     padding-left: 0;
     padding-right: 0;
 }
@@ -338,17 +350,10 @@ padding: 120px 0;} /*--Задаем внутренние паддинги--*/
 flex-basis: calc((100% - 2*24px)/3);
 }
 
-
-/*--Задание паддингов для секции Портфолио--*/
-.section-port
-{
-padding-top: 96px;
-padding-bottom: 120px;
-}
-
 /*--Создание контейнера - имя, должность членов команды--*/
 .img-title {
-padding: 32px 0px; /*--внутренние отступы контейнера--*/
+padding: 32px 16px; /*--внутренние отступы контейнера--*/
+border: 1px solid #e7e9fc;
 }
 
 /*--Задание отступа подзаголовку img Portfolio--*/
@@ -370,7 +375,7 @@ margin-left: auto;
 margin-right: auto;
 }
 
-.ft
+.foot
 {display: inline-block;
 margin-bottom: 16px;}
 
@@ -384,7 +389,6 @@ letter-spacing: 0.03em;
 text-transform: uppercase;
 }
 
-
 .footer-text {
 color: var(--footer-main-text-color);
 font-weight: 400;
@@ -393,4 +397,8 @@ line-height: 1.5;
 letter-spacing: 0.02em;
 width: 264px;
 }
+
+
+
+
 
