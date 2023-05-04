@@ -27,7 +27,10 @@ h1, h2, h3, p
 }
 
 /*--Сбрасываем нижний отступ в изображениях, делая их блоковыми--*/
-img {display: block;}
+img 
+{display: block;
+max-width: 100%;
+height: auto;}
 
 /*--Задание палитры цветов через переменные--*/
 :root
@@ -52,7 +55,6 @@ img {display: block;}
 /*--Задаем контейнер для центровки и ограничения ширины контента--*/
 
 .header {
-padding: 24px 0;    
 border-bottom: 1px solid #E7E9FC;
 }
 
@@ -66,6 +68,7 @@ padding: 0 15px;
 /*--Описываем контейнер главной навигации--*/
 .main-nav {
 display: flex; /*--Выстраиваем элементы по горизонтали--*/
+align-items: center;
 }
 
 /*--Делаем логотип и список навигации flex-контейнером--*/
@@ -74,7 +77,7 @@ display: flex;
 align-items: center;/*--Центруем элементы вдоль горизонтальной оси--*/
 }
 
-/*--Данные логотипа--*/
+/*--Данные верхнего логотипа--*/
 .logo
 {
 color: var(--logo-color);
@@ -84,6 +87,11 @@ font-size: 18px;
 line-height: 1.17;
 letter-spacing: 0.03em;
 text-transform: uppercase;
+}
+
+/*--Дополнительные данные верхнего логотипа--*/
+.head
+{padding: 24px 0;
 margin-right: 76px;/*--Задаем отступ между логотипом и nav-ul--*/
 }
 
@@ -115,7 +123,9 @@ display: flex;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    display: block;
     padding: 24px 0;
+    
 }
 
 /*--Меняем цвет ссылок при наведении--*/
@@ -146,6 +156,8 @@ font-size: 16px;
 line-height: 1.5;
 letter-spacing: 0.02em;
 text-decoration: none;
+display: block;
+padding: 24px 0;
 }
 
 /*--Меняем цвет ссылок при наведении--*/
@@ -222,6 +234,21 @@ text-align: center;
 letter-spacing: 0.02em;
 text-transform: capitalize;
 margin-bottom: 72px;
+}
+
+/*--Описываем скрытый заголовок--*/
+.visually-hidden
+{
+position: absolute;
+width: 1px;
+height: 1px;
+margin: -1px;
+border: 0;
+padding: 0;
+white-space: no-wrap;
+clip-path: inset(100%);
+clip: rect(0 0 0 0);
+overflow: hidden;    
 }
 
 /*--Делаем список flex-элементом, чтобы список расположить горизонтально--*/
@@ -358,26 +385,21 @@ border-top: none;
 
 /*--Задание отступа подзаголовку img Portfolio--*/
 .img-title .section-subtitle
-{padding-left: 16px;
- margin-bottom: 8px;}
-
-/*--Задание отступа подтексту img Portfolio--*/
-.img-title .section-text 
-{padding-left: 16px;}
-
+{margin-bottom: 8px;}
 
 /*--Данные Футера--*/
 .footer {
 background-color: var(--footer-background-color);
-width: 1440px;
 padding: 100px 0;
 margin-left: auto;
 margin-right: auto;
 }
 
-.foot
-{display: inline-block;
-margin-bottom: 16px;}
+/*--Дополнительные данные нижнего логотипа--*/
+.foot {
+display: inline-block;
+margin-bottom: 16px;
+}
 
 .footer-word
 {color: var(--footer-main-text-color);
@@ -397,8 +419,3 @@ line-height: 1.5;
 letter-spacing: 0.02em;
 width: 264px;
 }
-
-
-
-
-
